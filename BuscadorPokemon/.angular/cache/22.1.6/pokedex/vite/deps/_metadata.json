@@ -1,0 +1,72 @@
+{
+  "hash": "ef42b2f3",
+  "configHash": "9765e67a",
+  "lockfileHash": "3311a9c3",
+  "browserHash": "f5c6b205",
+  "optimized": {
+    "@angular/common": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "d0fd8df7",
+      "needsInterop": false
+    },
+    "@angular/common/http": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/http.mjs",
+      "file": "@angular_common_http.js",
+      "fileHash": "1f8a2d81",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "5f27de41",
+      "needsInterop": false
+    },
+    "@angular/forms": {
+      "src": "../../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
+      "file": "@angular_forms.js",
+      "fileHash": "d3163f12",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "ff467063",
+      "needsInterop": false
+    },
+    "rxjs": {
+      "src": "../../../../../../node_modules/rxjs/dist/esm5/index.js",
+      "file": "rxjs.js",
+      "fileHash": "fcb5c1a7",
+      "needsInterop": false
+    },
+    "zone.js": {
+      "src": "../../../../../../node_modules/zone.js/fesm2015/zone.js",
+      "file": "zone__js.js",
+      "fileHash": "e9adabc8",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "_xhr-chunk-DksCRryF": {
+      "file": "_xhr-chunk-DksCRryF.js",
+      "isDynamicEntry": false
+    },
+    "common-B6MUvTOR": {
+      "file": "common-B6MUvTOR.js",
+      "isDynamicEntry": false
+    },
+    "core-CgWZEqZY": {
+      "file": "core-CgWZEqZY.js",
+      "isDynamicEntry": false
+    },
+    "esm5-ChK3bs0s": {
+      "file": "esm5-ChK3bs0s.js",
+      "isDynamicEntry": false
+    },
+    "http-SGL_pjbD": {
+      "file": "http-SGL_pjbD.js",
+      "isDynamicEntry": false
+    }
+  }
+}
