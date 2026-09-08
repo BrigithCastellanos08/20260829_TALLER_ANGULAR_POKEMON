@@ -1,0 +1,402 @@
+ /* ==========================================================
+     RESET Y CONFIGURACIÓN GENERAL
+     ========================================================== */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    background:
+      radial-gradient(1000px circle at 12% -10%, rgba(4, 217, 245, 0.795), transparent 45%),
+      radial-gradient(1000px circle at 92% 108%, rgba(4, 217, 245, 0.795), transparent 45%),
+      linear-gradient(300deg, #eaf3ba 0%, #ecb6c2 60%);
+    color: #f506e1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column; /* Esta línea solucionará la alineación vertical */
+    align-items: center;
+    justify-content: center;
+    padding: 40px 16px;
+    line-height: 1.5;
+  }
+  
+  /* ==========================================================
+     CONTENEDOR PRINCIPAL (tarjeta elegante en dos tonos)
+     ========================================================== */
+  .form-wrapper {
+    width: 100%;
+    max-width: 740px;
+    background-color: #faf7f1;
+    border-radius: 18px;
+    box-shadow: 0 25px 60px rgba(112, 2, 255, 0.45), 0 0 0 1px rgba(112,2, 255, 0.45);
+  }
+
+ 
+  .form-header {
+    position: relative;
+    padding: 46px 46px 36px;
+    text-align: center;
+    color: #f4ead1;
+    background:
+      repeating-linear-gradient(135deg, rgba(239, 196, 245, 0.733) 0px, rgba(239, 196, 245, 0.733) 1px, transparent 1px, transparent 26px),
+      linear-gradient(160deg, #e095c1 0%, #e095c1 55%, #e095c1 100%);
+    overflow: hidden;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    border-bottom: 1px solid rgba(191, 156, 90, 0.55);
+  }
+
+  .form-header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(420px circle at 15% -20%, rgba(224, 3, 3, 0.2), transparent 60%),
+      radial-gradient(420px circle at 105% 120%, rgba(226, 2, 2, 0.15), transparent 60%);
+    pointer-events: none;
+  }
+
+  .form-header h1 {
+    position: relative;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #f5f1f4;
+    margin-bottom: 7px;
+  }
+
+  .form-header p {
+    position: relative;
+    font-size: 12.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #f5f1f4;
+  }
+
+  /* ---------- Cuerpo (crema, contiene el formulario) ---------- */
+  .form-body {
+    padding: 40px 46px 44px;
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+  }
+
+  /* ==========================================================
+     ESTRUCTURA DEL FORMULARIO
+     ========================================================== */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
+  }
+
+  .form-row {
+    display: flex;
+    gap: 23px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    gap: 7px;
+  }
+
+  label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #c471af;
+  }
+
+  label .required-mark {
+    color: #b92f2f;
+    margin-left: 2px;
+  }
+
+  /* ==========================================================
+     CAMPOS DE ENTRADA CON ICONO
+     ========================================================== */
+  .input-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  .input-icon svg {
+    position: absolute;
+    left: 15px;
+    width: 19px;
+    height: 19px;
+    color: #c471af;
+    pointer-events: none;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="date"],
+  input[type="tel"],
+  select {
+    width: 100%;
+    padding: 13px 15px 13px 45px;
+    font-size: 15px;
+    font-family: inherit;
+    color: #080808;
+    background-color: #ffffff;
+    border: 1.5px solid #c471af;
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  }
+
+  input::placeholder {
+    color: #0f0f0f;
+  }
+
+  /* Estado hover */
+  input[type="text"]:hover,
+  input[type="email"]:hover,
+  input[type="date"]:hover,
+  input[type="tel"]:hover,
+  select:hover {
+    border-color: #c471af;
+    background-color: #fffdf8;
+  }
+
+  /* Estado focus */
+  input[type="text"]:hover,
+  input[type="email"]:hover,
+  input[type="date"]:hover,
+  input[type="tel"]:hover,
+  select:hover {
+    border-color: #b9822f;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(239, 196, 245, 0.733);
+  }
+
+  
+  /* Se marca en rojo solo después de que el usuario interactuó
+     con el campo y lo dejó inválido (o intentó enviar el formulario) */
+  input:user-invalid,
+  select:user-invalid {
+    border-color: #c0392b;
+    background-color: #fdf3f2;
+  }
+
+  input:user-invalid:focus,
+  select:user-invalid:focus {
+    box-shadow: 0 0 0 4px rgba(239, 196, 245, 0.733);
+  }
+
+  .field-hint {
+    color: #c471af;
+    font-size: 12px;
+    margin-top: -2px;
+  }
+
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23a9843f'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z' clip-rule='evenodd'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 16px;
+    padding-right: 40px;
+    cursor: pointer;
+  }
+
+
+  /* ==========================================================
+     NÚMERO DE DOCUMENTO
+     ========================================================== */
+  .documento-field {
+    position: relative;
+    width: 100%;
+  }
+
+  .documento-field input {
+    display: block;
+    width: 100%;
+  }
+
+  /* ==========================================================
+     CIUDAD DE DOMICILIO
+     ========================================================== */
+  .ciudad-field {
+    position: relative;
+    width: 100%;
+  }
+
+  /* ==========================================================
+     CASILLA DE VERIFICACIÓN (CHECKBOX)
+     ========================================================== */
+  .checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    background-color: #ffffff;
+    border: 1.5px solid #c471af;
+    border-radius: 10px;
+    padding: 16px 18px;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .checkbox-group:hover {
+    border-color: #c471af;
+  }
+
+  .checkbox-group input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    margin-top: 1px;
+    border: 1.5px solid #c471af;
+    border-radius: 6px;
+    background-color: #fffdf8;
+    cursor: pointer;
+    display: grid;
+    place-content: center;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .checkbox-group input[type="checkbox"]::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    transform: scale(0);
+    transition: transform 0.12s ease-in-out;
+    background-color: transparent;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  }
+
+  .checkbox-group input[type="checkbox"]:checked {
+    background-color: #ece6eb;
+    border-color: #f8f8f8;
+  }
+
+  .checkbox-group input[type="checkbox"]:checked::before {
+    transform: scale(1);
+    background-color: #c471af;
+  }
+
+  .checkbox-group label {
+    font-size: 14px;
+    font-weight: 400;
+    color: #070707;
+    cursor: pointer;
+  }
+
+  /* ==========================================================
+     BOTONES DE ACCIÓN
+     ========================================================== */
+  .form-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 13px;
+  }
+
+  button {
+    flex: 1;
+    padding: 15px 22px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: inherit;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  }
+
+  .btn-submit {
+    background: linear-gradient(135deg, #c471af 0%, #c471af 100%);
+    color: #f8f8f8;
+    box-shadow: 0 6px 18px rgba(231, 148, 227, 0.4);
+    border: 1px solid rgba(231, 148, 227, 0.4);
+  }
+
+  .btn-submit:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 22px rgba(221, 9, 158, 0.45);
+  }
+
+  .btn-submit:active {
+    transform: translateY(0);
+  }
+
+  .btn-reset {
+    background-color: #ffffff;
+    color: #d18ab1;
+    border: 1.5px solid #d18ab1;
+  }
+
+  
+
+  .form-footnote {
+    margin-top: 5px;
+    text-align: center;
+    font-size: 12.5px;
+    color: #d18ab1;
+  }
+
+  /* ==========================================================
+     RESPONSIVE — TABLET
+     ========================================================== */
+  @media (max-width: 768px) {
+    .form-header {
+      padding: 36px 30px 28px;
+    }
+    .form-body {
+      padding: 30px 30px 34px;
+    }
+  }
+
+  /* ==========================================================
+     RESPONSIVE — MÓVIL
+     ========================================================== */
+  @media (max-width: 560px) {
+    .form-row {
+      flex-direction: column;
+      gap: 21px;
+    }
+
+    .form-header {
+      padding: 30px 21px 23px;
+      border-top-left-radius: 14px;
+      border-top-right-radius: 14px;
+    }
+
+    .form-body {
+      padding: 25px 21px 29px;
+      border-bottom-left-radius: 14px;
+      border-bottom-right-radius: 14px;
+    }
+
+    .form-wrapper {
+      border-radius: 14px;
+    }
+
+    .form-header h1 {
+      font-size: 22.5px;
+    }
+
+    .form-actions {
+      flex-direction: column;
+    }
+  }
+
+  /* Fondo rosado (#c471af) al autocompletar */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #f7dcf0 inset !important;
+  -webkit-text-fill-color: #0f0f0f !important;
+  transition: background-color 5000s ease-in-out 0s;
+}

@@ -1,14 +1,12 @@
-import {} from'@angular/router';
+//AQUI ESTOY EXPORTANDO LAS LIBRERIAS
 import { Routes } from '@angular/router';
-import {RegistroUsuarioPokemon} from './components/registro-usuario/registro-usuario.components';
-import {BuscadorPokemon} from './componets/buscador-pokemon/buscador-pokemon.componets';
-import path from 'path';
-import { Component } from '@angular/core';
-import { redirect } from 'next/dist/server/api-utils';
+import { RegistroUsuario } from './components/registro-usuario/registro-usuario';
+import { BuscadorPokemon } from './/buscador-pokemon';
 
-export const_routes: Routes = [
-    {path: 'registro',components: RegistroUsuarioPokemon},
-    {path: 'buscador',components: BuscadorPokemon},
-    {path:'',redirectTo: '/buscador', pathMatch: 'full'}
-]
+export const routes: Routes = [
+  { path: 'registro', component: RegistroUsuario }, //ME LLEVA A BUSCADOR POR DEFECTO DE REGISTROUSUARIO    
+  { path: 'buscador', component: BuscadorPokemon }, //AQUI ME LLEVA A BUSCADOR POR DEFECTO DE BUSCADORPOKEMON
+  { path: '', redirectTo: '/buscador', pathMatch: 'full' }
+];
+
 
