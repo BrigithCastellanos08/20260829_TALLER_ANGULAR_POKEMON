@@ -3,7 +3,8 @@
     <header class="form-header">
       <h1> Formulario de Registro</h1>
       <p>Por favor completa todos los campos</p>
-    </div>
+    </header>
+    
 
     <div class="form-body">
       <form id='formularioregistro' (ngSubmit)="guardarUsuario()" >
@@ -13,14 +14,14 @@
           <div class="form-group">
             <label for="nombre">Nombre</label>  
             <div class="input-icon">
-              <input type="text" id="nombre" [(ngModel)]="Nombre" name="nombre" placeholder="Ej: María" autocomplete="given-name">
+              <input type="text" id="nombre" [(ngModel)]="nombre" name="nombre" placeholder="Ej: María" autocomplete="given-name">
             </div>
           </div>
 
           <div class="form-group">
             <label for="apellido">Apellido</label>
             <div class="input-icon">
-             <input type="text" id="apellido" [(ngModel)]= "Apellido" name="apellido" placeholder="Ej: Gómez" autocomplete="family-name">
+             <input type="text" id="apellido" [(ngModel)]= "apellido" name="apellido" placeholder="Ej: Gómez" autocomplete="family-name">
             </div>
           </div>
         </div>
@@ -30,7 +31,7 @@
           <div class="form-group">
             <label for="tipo-documento">Tipo de documento</label>
             <div class="input-icon">
-              <select id="tipo_documento" [(ngModel)]="Tipo_Documento" name="tipo-documento">
+              <select id="tipo_documento" [(ngModel)]="tipo_documento" name="tipo-documento">
                 <option value="" disabled selected>Selecciona una opción</option>
                 <option value="Cedula de Ciudadania">Cédula de Ciudadanía</option>
                 <option value="Cedula de Extranjeria">Cédula de Extranjería</option>
@@ -43,7 +44,7 @@
             <label for="documento">Número de documento</label>
             <div class="input-icon">
               <div class="documento-field">
-                <input type="text" id="documento"  [(ngModel)]="cc" name="numero-documento" placeholder="Ej: 1234567890" required>
+                <input type="text" id="documento"  [(ngModel)]="cc" name="documento" placeholder="Ej: 1234567890" required>
               </div>
             </div>
           </div>
@@ -125,7 +126,7 @@
         <!-- Tratamiento de datos -->
         <div class="checkbox-group">
           <input
-            type="checkbox" id="tratamiento_datos" [(ngModel)]="tratamientoDatos" name="tratamiento-datos"required>
+            type="checkbox" id="tratamiento_datos" [(ngModel)]="tratamiento_datos" name="tratamiento-datos"required>
           <label for="tratamiento_datos">
             Autorizo el tratamiento de mis datos personales de acuerdo con la política de privacidad.
           </label>
@@ -137,15 +138,15 @@
         </div>
 
  </form>
-         
+    </div>     
    @if (ultimoUsuario(); as user) {
     <div class="user-info">
       <h3>Usuario Registrado</h3>
       <p><strong>ID generado:</strong> {{ user.id }}</p>
-      <p><strong>Nombre Completo:</strong> {{ user.nombreCompleto }}</p>
-      <p><strong>Documento:</strong> {{ user.documento.tipo }} - {{ user.documento.numero }}</p>
-      <p><strong>Fecha de Nacimiento:</strong> {{ user.fechaNacimiento }}</p>
-      <p><strong>Correo:</strong> {{ user.correo }}</p>
+      <p><strong>Nombre Completo:</strong> {{ user.nombre }}</p>
+      <p><strong>Documento:</strong> {{ user.documento.tipo }} {{ user.documento.numero }}</p>
+      <p><strong>Fecha de Nacimiento:</strong> {{ user.fecha_nacimiento }}</p>
+      <p><strong>Correo:</strong> {{ user.correo_electronico }}</p>
     </div>
   }
 
