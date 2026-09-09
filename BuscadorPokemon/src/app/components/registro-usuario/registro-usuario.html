@@ -11,26 +11,16 @@
         <!-- Nombre y Apellido -->
         <div class="form-row">
           <div class="form-group">
-            <label for="nombre">Nombre<span class="required-mark">*</span></label>
+            <label for="nombre">Nombre</label>  
             <div class="input-icon">
-              <input
-                type="text"
-                id="nombre"
-                name="nombre"
-                placeholder="Ej: María"
-                autocomplete="given-name">
+              <input type="text" id="nombre" [(ngModel)]="Nombre" name="nombre" placeholder="Ej: María" autocomplete="given-name">
             </div>
           </div>
 
           <div class="form-group">
-            <label for="apellido">Apellido<span class="required-mark">*</span></label>
+            <label for="apellido">Apellido</label>
             <div class="input-icon">
-              <input
-                type="text"
-                id="apellido"
-                name="apellido"
-                placeholder="Ej: Gómez"
-                autocomplete="family-name">
+             <input type="text" id="apellido" [(ngModel)]= "Apellido" name="apellido" placeholder="Ej: Gómez" autocomplete="family-name">
             </div>
           </div>
         </div>
@@ -38,9 +28,9 @@
         <!-- Tipo y número de documento -->
         <div class="form-row">
           <div class="form-group">
-            <label for="tipo-documento">Tipo de documento<span class="required-mark">*</span></label>
+            <label for="tipo-documento">Tipo de documento</label>
             <div class="input-icon">
-              <select id="tipo_documento" name="tipo-documento">
+              <select id="tipo_documento" [(ngModel)]="Tipo_Documento" name="tipo-documento">
                 <option value="" disabled selected>Selecciona una opción</option>
                 <option value="Cedula de Ciudadania">Cédula de Ciudadanía</option>
                 <option value="Cedula de Extranjeria">Cédula de Extranjería</option>
@@ -50,10 +40,10 @@
           </div>
 
           <div class="form-group">
-            <label for="documento">Número de documento<span class="required-mark">*</span></label>
+            <label for="documento">Número de documento</label>
             <div class="input-icon">
               <div class="documento-field">
-                <input type="text" id="documento" name="numero-documento" placeholder="Ej: 1234567890" required>
+                <input type="text" id="documento"  [(ngModel)]="cc" name="numero-documento" placeholder="Ej: 1234567890" required>
               </div>
             </div>
           </div>
@@ -62,25 +52,16 @@
         <!-- Fecha de nacimiento y correo -->
         <div class="form-row">
           <div class="form-group">
-            <label for="fecha_nacimiento">Fecha de nacimiento<span class="required-mark">*</span></label>
+            <label for="fecha_nacimiento">Fecha de nacimiento</label>
             <div class="input-icon">
-              <input
-                type="date"
-                id="fecha_nacimiento"
-                name="fecha_nacimiento"
-                autocomplete="bday">
+              <input type="date" id="fecha_nacimiento" [(ngModel)]="fecha_nacimiento" name="fecha_nacimiento" autocomplete="bday">
             </div>
           </div>
 
           <div class="form-group">
-            <label for="correo">Correo electrónico<span class="required-mark">*</span></label>
+            <label for="correo">Correo electrónico</label>
             <div class="input-icon">
-              <input
-                type="email"
-                id="correo"
-                name="correo"
-                placeholder="Ej: nombre@correo.com"
-                autocomplete="email">
+              <input type="email" id="correo" [(ngModel)]="correo" name="correo" placeholder="Ej: nombre@correo.com" autocomplete="email">
             </div>
           </div>
         </div>
@@ -88,9 +69,9 @@
         <!-- País y ciudad -->
         <div class="form-row">
           <div class="form-group">
-            <label for="pais">País de domicilio<span class="required-mark">*</span></label>
+            <label for="pais">País de domicilio</label>
             <div class="input-icon">
-              <select id="pais" name="pais">
+              <select id="pais" [(ngModel)]="pais" name="pais">
                 <option value="" disabled>Selecciona un país</option>
                 <option value="169" selected>Colombia</option>
                 <option value="063">Argentina</option>
@@ -104,7 +85,7 @@
             <label for="ciudad-placeholder">Ciudad de domicilio<span class="required-mark">*</span></label>
             <div class="input-icon">
               <div class="ciudad-field">
-                <select id="ciudad" name="ciudad" required>
+                <select id="ciudad" [(ngModel)]="ciudad" name="ciudad" required>
                   <option value="" disabled selected>Selecciona una ciudad</option>
                   <option value="11001">Bogotá</option>
                   <option value="05001">Medellín</option>
@@ -134,24 +115,17 @@
 
         <!-- Teléfono -->
         <div class="form-group">
-          <label for="telefono">Número de teléfono<span class="required-mark">*</span></label>
+          <label for="telefono">Número de teléfono</label>
           <div class="input-icon">
             <input
-              type="tel"
-              id="telefono"
-              name="telefono"
-              placeholder="Ej: 3001234567"
-              autocomplete="tel">
+              type="tel" id="telefono"[(ngModel)]="telefono" name="telefono" placeholder="Ej: 3001234567" autocomplete="tel">
           </div>
         </div>
 
         <!-- Tratamiento de datos -->
         <div class="checkbox-group">
           <input
-            type="checkbox"
-            id="tratamiento_datos"
-            name="tratamiento-datos"
-            required>
+            type="checkbox" id="tratamiento_datos" [(ngModel)]="tratamientoDatos" name="tratamiento-datos"required>
           <label for="tratamiento_datos">
             Autorizo el tratamiento de mis datos personales de acuerdo con la política de privacidad.
           </label>
@@ -164,6 +138,17 @@
 
  </form>
          
-      
+   @if (ultimoUsuario(); as user) {
+    <div class="user-info">
+      <h3>Usuario Registrado</h3>
+      <p><strong>ID generado:</strong> {{ user.id }}</p>
+      <p><strong>Nombre Completo:</strong> {{ user.nombreCompleto }}</p>
+      <p><strong>Documento:</strong> {{ user.documento.tipo }} - {{ user.documento.numero }}</p>
+      <p><strong>Fecha de Nacimiento:</strong> {{ user.fechaNacimiento }}</p>
+      <p><strong>Correo:</strong> {{ user.correo }}</p>
+    </div>
+  }
+
+  </main>   
       
     

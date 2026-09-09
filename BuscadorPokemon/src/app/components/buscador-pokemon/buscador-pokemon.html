@@ -1,1 +1,30 @@
-<p>buscador-pokemon works!</p>
+form(ngSubmit)="buscarPokemon()">
+  <input
+     type="text"
+     [(ngModel)]="nombrePokemonInput"
+     name="nombrePokemon"
+     placeholder="Ej. Pikacku, Charmander, Bulbasaur"
+     required
+    />
+</div>
+</div>
+  <button type="submit">Buscar</button>
+</div>
+
+</form>
+
+
+<div id="resultadoPokemon">
+
+    @if(pokemon(); as p){
+
+        <div>
+           <h2>{{ p.name }}</h2>
+           <img [src]="p.image" [alt]="p.name" />
+           <p><strong>Elementos:</strong> {{ p.type }}</p>
+        </div>
+
+
+    } @else if(!mensajeError()){
+        <p> Error con aura </p>
+    }

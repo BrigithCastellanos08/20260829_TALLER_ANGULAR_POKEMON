@@ -26,6 +26,7 @@ export interface Usuario {
   styleUrl: './registro-usuario.css',
   templateUrl: './registro-usuario.html',
 })
+
 export class RegistroUsuario {
     nombre = signal('');
     apellido = signal('');
