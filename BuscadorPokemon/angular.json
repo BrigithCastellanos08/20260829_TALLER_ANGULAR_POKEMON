@@ -20,7 +20,7 @@
             "styles": ["src/styles.css"]
           },
           "configurations": {
-            "production": { "budgets": [{ "type": "initial", "maximumWarning": "2mb", "maximumError": "5mb" }], "outputHashing": "all" },
+            "production": { "budgets": [{ "type": "initial", "maximumWarning": "1mb", "maximumError": "2mb" }], "outputHashing": "all" },
             "development": { "optimization": false, "extractLicenses": false, "sourceMap": true }
           },
           "defaultConfiguration": "production"
@@ -29,5 +29,7 @@
       }
     }
   },
-  "cli": { "analytics": false }
+  "cli": {
+    "analytics": "b25ae9a6-c969-4cd6-a5e8-2f9867ba226a"
+  }
 }

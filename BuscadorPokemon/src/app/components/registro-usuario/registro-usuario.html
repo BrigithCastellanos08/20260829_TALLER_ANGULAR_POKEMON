@@ -44,7 +44,7 @@
             <label for="documento">Número de documento</label>
             <div class="input-icon">
               <div class="documento-field">
-                <input type="text" id="documento"  [(ngModel)]="cc" name="documento" placeholder="Ej: 1234567890" required>
+                <input type="text" id="documento"  [(ngModel)]="documento" name="documento" placeholder="Ej: 1234567890" required>
               </div>
             </div>
           </div>
@@ -143,7 +143,7 @@
     <div class="user-info">
       <h3>Usuario Registrado</h3>
       <p><strong>ID generado:</strong> {{ user.id }}</p>
-      <p><strong>Nombre Completo:</strong> {{ user.nombre }}</p>
+      <p><strong>Nombre Completo:</strong> {{ user.nombrecompleto }}</p>
       <p><strong>Documento:</strong> {{ user.documento.tipo }} {{ user.documento.numero }}</p>
       <p><strong>Fecha de Nacimiento:</strong> {{ user.fecha_nacimiento }}</p>
       <p><strong>Correo:</strong> {{ user.correo_electronico }}</p>

@@ -30,12 +30,12 @@ export interface Usuario {
 export class RegistroUsuario {
     nombre = signal('');
     apellido = signal('');
-    tipo_documento = signal('CC');
+    tipo_documento = signal('');
     documento = signal('');
     fecha_nacimiento = signal('');
     correo = signal('');
     pais = signal('');
-    cuidad = signal('');
+    ciudad = signal('');
     telefono= signal('');
     tratamiento_datos = signal(false);
 
@@ -44,6 +44,7 @@ export class RegistroUsuario {
     guardarUsuario(){
         if(!this.tratamiento_datos()){
             alert('Debes aceptar el tratamiento de datos personales'); 
+            return;
         }
         const usuarioCreado = {
         id : Date.now(),
@@ -56,7 +57,7 @@ export class RegistroUsuario {
         correo_electronico : this.correo(),
         domicilio : {
              pais_domicilio : this.pais(),
-             ciudad_domicilio : this.cuidad()
+             ciudad_domicilio : this.ciudad()
         },
 
         Número_de_teléfono : this.telefono(),
