@@ -1,14 +1,12 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NgClass , NgStyle } from '@angular/common';
+import { PokemonStorageService, PokemonTarjeta } from '../../services/pokemon-storage';
+import { ResaltarTarjeta } from '../../directives/resaltar-tarjeta';
 
-interface PokemonData {
-  name: string;
-  image: string;
-  type: string;
-}
 
 @Component({
-  imports: [FormsModule],
+  imports: [FormsModule, NgClass, NgStyle, ResaltarTarjeta],
   standalone: true, // DECLARA QUE UN COMPONENTE ES AUTONOMO
   selector: 'app-buscador-pokemon',
   styleUrl: './buscador-pokemon.css',
@@ -17,39 +15,52 @@ interface PokemonData {
 
 
 export class BuscadorPokemon {
-  nombrePokemonInput = signal('') ;
-  pokemon = signal<PokemonData | null>(null);
-  mensajeError = signal<string | null>(null);
 
-  async buscarPokemon() {
+  pokemonService = inject(PokemonStorageService);
+  nombrePokemonInput = signal('') ;
+  pokemon = signal<PokemonTarjeta | null>(null);
+  mensajeError = signal<string | null>(null);
+  cargando = signal(false);
+
+  buscarPokemon() {
   
   const nombrePokemon = this.nombrePokemonInput().trim().toLowerCase();
 
   if (!nombrePokemon) return;
 
   this.mensajeError.set(null); // Limpiar mensaje de error antes de la búsqueda
-  
-  try {
-    
-    const  respuesta = await fetch(`https://pokeapi.co/api/v2/pokemon/${nombrePokemon}`);
+  this.cargando.set(true); // Indicar que la búsqueda está en cargando
+ 
+  this.pokemonService.buscarEnAPI(nombrePokemon).subscribe({
+    next: (res) => {
+      this.pokemon.set({
+        id: res.id,
+        name: res.name.toUpperCase(),
+        image: res.sprites.front_default,
+        type: res.types[0].type.name,
+        base_experience: res.base_experience,
+        esFavorito: false
 
-    if (!respuesta.ok) {
-    throw  new Error('¡No se encontró el Pokémon!');
-    }
-
-    const datos = await respuesta.json();
-
-    this.pokemon.set({
-      name: datos.name.toUpperCase(),
-      image: datos.sprites.front_default,
-      type: datos.types.map((typeInfo: any) => typeInfo.type.name).join (', '), //EL MAP ME CONVIERTE EN TEXTO DE ACUERDO CON LA PROPIEDAD QUE YO LE PIDA EN ESTE CASO ES NAME//ME LLAMA LISTAS
     });
 
-  }catch (error: any) {
+    this.cargando.set(false);
+  }, error: () => {
     this.pokemon.set(null);
-    this.mensajeError.set(error.message);
+    this.mensajeError.set('Ojito no se encontro el pokemon');
+    this.cargando.set(false);
   }
-  
+});
+
+}
+
+guardarEnEquipo() {
+  const poke = this.pokemon();
+  if (poke){
+    this.pokemonService.guardarPokemon(poke);
+    alert(`${poke.name} agregado al almacenamiento exitosamente!`);
+    this.pokemon.set(null);
+    this.nombrePokemonInput.set('');
+  }
 }
 
 }
