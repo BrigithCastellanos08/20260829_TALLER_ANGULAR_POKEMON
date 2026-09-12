@@ -6,14 +6,14 @@ import { Directive, ElementRef, HostListener,inject ,input } from '@angular/core
 })
 export class ResaltarTarjeta {
   private el = inject(ElementRef);
-  colorBorde = input<string>('#FFFF00');
+  colorBorde = input<string>('#fda8d2');
   
   @HostListener('mouseenter') onMouseEnter() {
     this.aplicarEfecto(`3px solid ${this.colorBorde()}`, 'scale(1.03)');
 }
 
   @HostListener('mouseleave') onMouseLeave() {
-    this.aplicarEfecto(`3px solid #55D48F`, 'scale(1)');
+    this.aplicarEfecto(`3px solid #fda8d2`, 'scale(1)');
 }
 
 private aplicarEfecto(borde: string, transformacion: string) {

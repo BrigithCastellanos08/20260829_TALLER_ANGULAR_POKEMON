@@ -14,9 +14,9 @@
   font-weight: bold;
 }
 
-.tipo-fire { background-color: #fff3e0; }
-.tipo-water { background-color: #e1f5fe; }
-.tipo-grass { background-color: #e8f8f5; }
+.tipo-fire { background-color: #fda8d2; }
+.tipo-water { background-color: #fda8d2; }
+.tipo-grass { background-color: #fda8d2; }
 
 .btn-guardar {
   margin-top: 1rem;
